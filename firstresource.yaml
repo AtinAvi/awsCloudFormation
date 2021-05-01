@@ -3,25 +3,17 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       KeyName: "ec2-key-awslearn" 
-      DisableApiTermination: "true" 
+      DisableApiTermination: "false" 
       ImageId: "ami-0fbd7e2032a73c4c2"
       InstanceType: "t3.micro"
       Monitoring: "false"
-      SecurityGroupIds:
-      - !Ref secGroupName
-   
       Tags:
         - Key: "Name"
           Value: "myfirstInstance"
+
   secGroupName:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupName: "cfSecGroup"
       GroupDescription: "Created from cloudformation"
-  secGroupNameIng:
-    Type: 'AWS::EC2::SecurityGroupIngress'
-    Properties:
-      IpProtocol: tcp
-      FromPort: 80
-      ToPort: 80
-      groupId: !Ref secGroupName
+      
